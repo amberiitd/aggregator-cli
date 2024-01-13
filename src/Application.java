@@ -24,7 +24,11 @@ public class Application {
     String inputFileName = args[1];
     String outputFileName = args[3];
     boolean isUpdate = args.length == 5 && args[4].equals("--update");
-    Long outputUpdateAtUnix = Files.getLastModifiedTime(Paths.get(outputFileName)).to(TimeUnit.SECONDS);
+
+    Long outputUpdateAtUnix = 0l;
+    try{
+      outputUpdateAtUnix= Files.getLastModifiedTime(Paths.get(outputFileName)).to(TimeUnit.SECONDS);
+    }catch(Exception e){}
 
     System.out.println("Reading events...");
     List<Event> events = isUpdate ? InputReader.readNewEvents(inputFileName, outputUpdateAtUnix)

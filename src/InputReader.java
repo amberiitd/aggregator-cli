@@ -58,8 +58,7 @@ public class InputReader {
       }
       return summmaryMap;
     } catch (IOException e) {
-      System.out.println("Error reading output file: " + e.getMessage());
-      System.exit(1);
+      System.out.println("Warning: reading output file: " + e.getMessage());
     }
     return new HashMap<>();
   }
