@@ -16,7 +16,7 @@ NOTE: Enable real time aggregation using `--update` cli option. In real time agg
 1. Ensure you have Java installed on your system.
 2. Make script file `aggregate_events` executable:
 ```bash
-   chmod +x aggregator
+   chmod +x aggregate_events
  ```
 
 ## CLI command argument Options
