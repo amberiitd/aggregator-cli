@@ -13,7 +13,9 @@ import java.util.concurrent.TimeUnit;
 public class Application {
   public static void main(String... args) throws Exception {
 
-    if (args.length < 4 || !args[0].equals("-i") || !args[2].equals("-o")) {
+    if (args.length < 4 
+        || !(args[0].equals("-i") || args[0].equals("--input"))
+        || !(args[2].equals("-o") || args[2].equals("--output"))) {
       System.out.println("Error: wrong arguments");
       System.out.println("Usage: ./aggregate_events -i input.json -o output.json [--update]");
       System.exit(1);
@@ -32,11 +34,10 @@ public class Application {
     System.out.printf("Processing %d events \n", events.size());
     // System.out.printf("Initial summary: %s\n", dailySummary.toString());
 
-    if (events.size() > 0){
+    if (events.size() > 0) {
       EventAggregator.aggregateEvents(events, dailySummary);
       OutputWriter.writeSummaryToFile(outputFileName, dailySummary);
     }
-
 
     outputUpdateAtUnix = Files.getLastModifiedTime(Paths.get(outputFileName)).to(TimeUnit.SECONDS);
     System.out.printf("Success: Output written to %s, latest update timestamp: %d\n", outputFileName,

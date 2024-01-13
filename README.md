@@ -26,9 +26,9 @@ NOTE: Enable real time aggregation using `--update` cli option. In real time agg
 
 ## One-Time Aggregation
 ```bash
-  ./aggregate_events -i input.json -o output.json
+  ./aggregate_events -i <input_json_file_path> -o <output_json_file_path>
 ```
 ## Real-Time Aggregation
 ```bash
-  ./aggregate_events -i input.json -o output.json
+  ./aggregate_events -i <input_json_file_path> -o <output_json_file_path> --update
 ```
